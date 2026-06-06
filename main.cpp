@@ -1,80 +1,73 @@
-// ------------- FILE HEADER -------------
-// Author ✅: 
-// Assignment ✅:
-// Date ✅:
-// Citations: 
-
-
-// ------------- ZYBOOKS SCORES -------------
-// Chapter ✅: 
-// Participation ✅: 
-// Challenge ✅:
-// Labs ✅:
-
-
-// ------------- DISCORD POSTS -------------
-// https://discord.com/invite/URYKKf8YHm
-// Count ✅:
-// Links (Optional): 
-
-
-// ------------- DESIGN DOCUMENT -------------
-// A. INPUT ✅: 
-// B. OUTPUT ✅:
-// C. CALCULATIONS ✅:
-// D. LOGIC and ALGORITHMS ✅:
-//    (Optional) flow chart link or file name: 
-
-
-// ------------- TESTING -------------
-// PASS ALL GIVEN SAMPLE RUN TESTS ✅: 
-// (Optional) Additional tests count:   
-
-
-// ------------- CODE -------------
+/******************************************************************************
+# Author:           Lucy P
+# Lab:              Assignment 9
+# Date:             June 6, 2026
+# Description:      prompt user for number of positive digits, and then the
+#                   digits they want before calculating the max and minimum 
+#                   number, in the position it appears. 
+# Output:           min, max, minPosition, maxPosition as ints.
+# Sources:          zybooks, assignment 9 resources, zoom recordings.
+#******************************************************************************/
 #include <iostream>
-
 using namespace std;
 
-// Function prototypes (if any)
+// display function prototypes
+void getInput(int &num);
+void doStats(int num);
 
+// start main function
+int main() {
 
-// Main function
-// https://en.cppreference.com/w/cpp/language/main_function.html
-int main(int argc, char* argv[]) {
-  cout << "Hello, World!" << endl;
-  return 0;
+  int num;
+  // display welcome message
+  cout << "Welcome to my Final Exam Practice." << endl;
+
+  getInput(num);
+
+  cout << "\nThank you for using my program." << endl;
 }
 
-// Function implementations (if any)
+void getInput(int &num) {
+  int intCount = 0;
+   cout << "\nHow many positive integers do you want to process?: ";
+   cin >> intCount;
+      if(intCount <= 0) {
+        cout << "\nNo integers were entered." << endl;
+    } else {
+        doStats(intCount);
+  }
+}
 
+void doStats(int num) {
+  int min = 0;
+  int minPosition = 0;
+  int max = 0;
+  int maxPosition = 0;
 
-// ------------- DESIGN -------------
-/* 
-Program Name:
+  cout << endl; 
 
-Program Description:
+  for(int i = 1; i <= num; i++) {
+    int numInput = 0;
+    while(numInput <= 0) {
+      cout << "Enter integer # " << i << ": ";
+      cin >> numInput;
+      if(numInput <= 0) {
+        cout << "Enter a positive integer!" << endl;
+      }
+    }
 
-Design:
-A. INPUT
-Define the input variables including name data type. 
+    // check for min and max
+    if (i == 1 || numInput < min) {
+      min = numInput;
+      minPosition = i;
+    }
+    if (numInput > max) {
+      max = numInput;
+      maxPosition = i;
+    }
+  }
 
-B. OUTPUT
-Define the output variables including data types. 
-
-C. CALCULATIONS
-Describe calculations used by algorithms in step D.  
-List all formulas. 
-If there are no calculations needed, state there are no calculations.
-
-D. LOGIC and ALGORITHMS
-Design the logic of your program using pseudocode or flowcharts. 
-Use conditionals, loops, functions or array constructs.
-List the steps in transforming inputs into outputs. 
-https://github.com/Glen-Sasek-PCC-Instructor/2025-06-22/blob/main/Pseudocode-Reference.txt
-
-
-SAMPLE RUNS
-Copy from assignment document.
-
-*/
+  cout << "\nThe minimum number entered was " << min << " entered in position " << minPosition << "." << endl; 
+  cout << "The maximum number entered was " << max << " entered in position " << maxPosition << "." << endl;
+}
+  
